@@ -1,34 +1,34 @@
 <?php 
 error_reporting(E_ERROR | E_PARSE);
-$u =  (int)$_POST["harga"];
-$x =  $_POST["member"];
-$t = $_POST["submit2"];
+$u =  (int)$_POST["waktu"];
+$x =  $_POST["job"];
+$t = $_POST["submit3"];
 
-$r = null;
+$rs = null;
 $y = null;
 $a = null;
-$gajibersih = null; 
-$pajak = null; 
+$gajibersih22 = null; 
+$pajak22 = null; 
 $bonus = null; 
 
 if(isset($t)){
   switch($x){
   case "Meanager" :
-    $r = 700000000;
+    $rs = 700000000;
     break;
    case "Supervisor" :
-    $r = 500000000;
+    $rs = 500000000;
  break;
    case "Staff" :
-    $r = 300000000;
+    $rs = 300000000;
  break;
   }
   
-if($r >= 500000000 ){
+if($rs >= 500000000 ){
  $a = 15; 
-}elseif($r < 500000000 && $r >  300000000){
+}elseif($rs < 500000000 && $rs >  300000000){
     $a = 10; 
-}elseif($r <=  300000000){
+}elseif($rs <=  300000000){
     $a = 3; 
 };
 
@@ -40,8 +40,8 @@ if($u >= 200){
     $bonus = 0;
 }
 
-$pajak = ($r * $a) / 100;
-$gajibersih = $r - $pajak + $bonus;
+$pajak22 = ($rs * $a) / 100;
+$gajibersih22 = $rs - $pajak22 + $bonus;
 }
 
 
@@ -68,7 +68,7 @@ $gajibersih = $r - $pajak + $bonus;
 <body>
 
 
-<div  x-data="{ modalOpen: false,  }" x-init=" setTimeout(() => {<?=$gajibersih?> == null ? modalOpen = false  : modalOpen = true}, 400)  "
+<div  x-data="{ modalOpen: false,  }" x-init=" setTimeout(() => {<?=$gajibersih22?> == null ? modalOpen = false  : modalOpen = true}, 400)  "
 @keydown.escape.window="modalOpen = false">
 
   <template x-teleport="body">
@@ -253,12 +253,12 @@ $gajibersih = $r - $pajak + $bonus;
     <div class="flex gap-3">
         <h1 class="font-medium">GAJI POKOK</h1>
         :
-        <h1   x-money.id-ID.IDR ="<?=$r?>" ></h1>
+        <h1   x-money.id-ID.IDR ="<?=$rs?>" ></h1>
     </div>
     <div class="flex gap-3">
         <h1 class="font-medium" >Pajak</h1>
         :
-        <h1  x-money.id-ID.IDR ="<?=$pajak?>"></h1>
+        <h1  x-money.id-ID.IDR ="<?=$pajak22?>"></h1>
     </div>
     <div class="flex gap-3 ">
         <h1 class="font-medium">Bonus</h1>
@@ -269,7 +269,7 @@ $gajibersih = $r - $pajak + $bonus;
     <div class="flex gap-3">
         <h1 class="font-medium">GAJI BERSIH</h1>
         :
-        <h1 x-money.id-ID.IDR ="<?=$gajibersih?>"></h1>
+        <h1 x-money.id-ID.IDR ="<?=$gajibersih22?>"></h1>
     </div>
 
     </div>
@@ -317,7 +317,7 @@ $gajibersih = $r - $pajak + $bonus;
         <label for="hs-input-with-leading-and-trailing-icon" class="block text-sm lg:text-xl   font-medium mb-2">Jam Kerja</label>
         <div class="relative">
           <input  min="0"  required 
-          step="0.01" x-model="salary"  type="number" id="hs-input-with-leading-and-trailing-icon" name="harga" class="py-3 px-4 ps-11 pe-16 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="000">
+          step="0.01" x-model="salary"  type="number" id="hs-input-with-leading-and-trailing-icon" name="waktu" class="py-3 px-4 ps-11 pe-16 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="000">
           <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3">
             <span class="text-gray-500">
                 <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -341,21 +341,21 @@ $gajibersih = $r - $pajak + $bonus;
    
 
         <label class="flex items-start  p-5 space-x-3 bg-white border rounded-md shadow-sm hover:bg-gray-50 border-neutral-200/70">
-            <input x-model='status' type="radio" name="member" value="Meanager" class="text-gray-900 translate-y-px focus:ring-gray-700" />
+            <input x-model='status' type="radio" name="job" value="Meanager" class="text-gray-900 translate-y-px focus:ring-gray-700" />
             <span class="relative flex flex-col text-left space-y-1.5 leading-none">
                 <span  class="font-semibold">Menager</span>
                 <span  class="text-sm opacity-50">Keanggotaan premium dengan akses penuh ke semua fitur eksklusif, diskon spesial, dan layanan prioritas.</span>
             </span>
         </label>
         <label  class="flex my-2 items-start p-5 space-x-3 bg-white border rounded-md shadow-sm hover:bg-gray-50 border-neutral-200/70">
-            <input x-model='status' type="radio" name="member" value="Supervisor" class="text-gray-900 translate-y-px focus:ring-gray-700" />
+            <input x-model='status' type="radio" name="job" value="Supervisor" class="text-gray-900 translate-y-px focus:ring-gray-700" />
             <span class="relative flex flex-col text-left space-y-1.5 leading-none">
                 <span  class="font-semibold">Supervisor</span>
                 <span  class="text-sm opacity-50">Keanggotaan menengah dengan akses terbatas ke fitur eksklusif dan beberapa keuntungan spesial.</span>
             </span>
         </label>
         <label  class="flex items-start p-5 space-x-3 bg-white border rounded-md shadow-sm hover:bg-gray-50 border-neutral-200/70">
-            <input x-model='status' type="radio" name="member" value="Staff" class="text-gray-900 translate-y-px focus:ring-gray-700" />
+            <input x-model='status' type="radio" name="job" value="Staff" class="text-gray-900 translate-y-px focus:ring-gray-700" />
             <span class="relative flex flex-col text-left space-y-1.5 leading-none">
                 <span  class="font-semibold">Staff</span>
                 <span  class="text-sm opacity-50">Pengguna tanpa keanggotaan yang hanya memiliki akses ke fitur dasar tanpa manfaat tambahan.</span>
@@ -367,7 +367,7 @@ $gajibersih = $r - $pajak + $bonus;
 </div>
     <div class="space-y-3 md:flex md:space-y-0 md:space-x-4">
 
-    <button id="hs-run-on-click-run-confetti"  @click="!disabled() ? open=true : modalOpen = true  " name="submit2" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal" type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+    <button id="hs-run-on-click-run-confetti"  @click="!disabled() ? open=true : modalOpen = true  " name="submit3" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal" type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
         Submit
       </button>
       <button name="reset"  x-on:click="salary ='', status='' " type="button" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
